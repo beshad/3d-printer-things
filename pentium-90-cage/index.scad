@@ -68,5 +68,4 @@ difference()
 
 up(88.2) zrot(90) linear_extrude(height = 2) rect([ 150, 10 ], anchor = [ 0, 1, 0 ]);
 
-up(80) back(83) right(65) linear_extrude(height = 6)
-    shell2d(-2, ir = 0) rect([ 30, 10 ], anchor = [ 0, 1, 0 ]);
+up(80) back(80) right(65) linear_extrude(height = 6) shell2d(-2, ir = 0) rect([ 30, 7 ], anchor = [ 0, 1, 0 ]) fwd(3.5) left(15) zrot(90) right_triangle([7,8]);
