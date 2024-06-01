@@ -5,12 +5,12 @@ $fn = 360;
 
 // ruler(150, depth = 3, labels = true);
 
-module hdd_caddy()
+module add_hdd_cage()
 {
-    linear_extrude(height = 2) difference()
+    xrot(90) fwd(15) linear_extrude(height = 2) difference()
     {
-        rect([ 100, 70 ], anchor = [ -1, 0, 1 ]);
-        xcopies(41.3, sp = [ 0, 0, 0 ]) fwd(40) right(30) circle(r = 3);
+        rect([ 147, 30 ], anchor = [ -1, 0, 0 ], rounding = [ 15, 0, 15, 15 ]);
+        xcopies(101.6, sp = [ 0, 0, 0 ]) right(20) fwd(5) circle(r = 3);
     }
 }
 
@@ -26,12 +26,12 @@ module cdrom_caddy()
 
 module right_flap()
 {
-    up(76) yrot(90) linear_extrude(height = 2) rect([ 9, 77 ], anchor = [ 1, -1, 0 ], rounding = [ 0, 5, 5, 0 ]);
+    up(76) yrot(90) linear_extrude(height = 4) rect([ 9, 77 ], anchor = [ 1, -1, 0 ], rounding = [ 0, 5, 5, 0 ]);
 }
 
 module left_flap()
 {
-    down(83) yrot(90) linear_extrude(height = 2) rect([ 9, 90 ], anchor = [ 1, -1, 0 ], rounding = [ 8, 0, 0, 8 ]);
+    down(83) yrot(90) linear_extrude(height = 4) rect([ 9, 90 ], anchor = [ 1, -1, 0 ], rounding = [ 8, 0, 0, 8 ]);
 }
 
 module make_pattern()
@@ -54,6 +54,12 @@ difference()
         ycopies(90.2, sp = [ 0, 0, 0 ]) up(1) zrot(90)
             sparse_wall(h = 152, l = 132, thick = 2, strut = 2, anchor = [ 1, 1, 0 ]);
     }
-
     xcopies(10, n = 12, sp = [ 0, 0, 0 ]) xrot(90) right(15) make_pattern();
+}
+
+difference()
+{
+    ycopies(101.6) add_hdd_cage();
+    xcopies(6, n = 15, sp = [ 0, 0, 0 ]) right(31) down(7) xrot(90) yrot(90) xrot(20) linear_extrude(height = 3)
+        rect([ 180, 20 ], anchor = [ 0, 1, 0 ]);
 }
