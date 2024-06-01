@@ -34,11 +34,26 @@ module left_flap()
     down(83) yrot(90) linear_extrude(height = 2) rect([ 9, 90 ], anchor = [ 1, -1, 0 ], rounding = [ 8, 0, 0, 8 ]);
 }
 
-xrot(90)
+module make_pattern()
 {
-    right_flap();
-    left_flap();
-    zcopies(148) ycopies(43.1, sp = [ 0, 0, 0 ]) cdrom_caddy();
-    ycopies(90.2, sp = [ 0, 0, 0 ]) up(1) zrot(90)
-        sparse_wall(h = 150, l = 132, thick = 2, strut = 2, anchor = [ 1, 1, 0 ]);
+    for (i = [ 6, 34, 42, 50, 77, 85 ])
+    {
+        // back(i) cylinder(h = 180, r = 3, anchor = [ 1, 1, 0 ]);
+        random = rand_int(0, 180, 1)[0];
+        back(i) down(90) linear_extrude(height = 180) zrot(random) regular_ngon(n = 3, or = 4);
+    }
+}
+
+difference()
+{
+    xrot(90)
+    {
+        right_flap();
+        left_flap();
+        zcopies(150) ycopies(43.1, sp = [ 0, 0, 0 ]) cdrom_caddy();
+        ycopies(90.2, sp = [ 0, 0, 0 ]) up(1) zrot(90)
+            sparse_wall(h = 152, l = 132, thick = 2, strut = 2, anchor = [ 1, 1, 0 ]);
+    }
+
+    xcopies(10, n = 12, sp = [ 0, 0, 0 ]) xrot(90) right(15) make_pattern();
 }
