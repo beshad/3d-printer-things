@@ -55,6 +55,8 @@ difference()
             sparse_wall(h = 152, l = 132, thick = 2, strut = 2, anchor = [ 1, 1, 0 ]);
     }
     xcopies(10, n = 12, sp = [ 0, 0, 0 ]) xrot(90) right(15) make_pattern();
+    zcopies(43, sp = [ 0, 0, 0 ]) xcopies(6, n = 7, sp = [ 0, 0, 0 ]) right(40) up(27) xrot(90) yrot(90) xrot(-30)
+        linear_extrude(height = 3) rect([ 180, 18 ], anchor = [ 0, 1, 0 ]);
 }
 
 difference()
@@ -63,3 +65,8 @@ difference()
     xcopies(6, n = 15, sp = [ 0, 0, 0 ]) right(31) down(7) xrot(90) yrot(90) xrot(20) linear_extrude(height = 3)
         rect([ 180, 20 ], anchor = [ 0, 1, 0 ]);
 }
+
+up(88.2) zrot(90) linear_extrude(height = 2) rect([ 150, 10 ], anchor = [ 0, 1, 0 ]);
+
+up(80) back(83) right(65) linear_extrude(height = 6)
+    shell2d(-2, ir = 0) rect([ 30, 10 ], anchor = [ 0, 1, 0 ]);
