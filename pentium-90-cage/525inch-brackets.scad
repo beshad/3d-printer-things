@@ -7,10 +7,10 @@ $fn = 360;
 
 module add_hdd_cage()
 {
-    xrot(90) fwd(15) linear_extrude(height = 2) difference()
+    xrot(90) fwd(25) linear_extrude(height = 2) difference()
     {
-        rect([ 147, 30 ], anchor = [ -1, 0, 0 ], rounding = [ 15, 0, 15, 15 ]);
-        xcopies(101.6, sp = [ 0, 0, 0 ]) right(20) fwd(5) circle(r = 3);
+        rect([ 147, 50 ], anchor = [ -1, 0, 0 ], rounding = [ 15, 0, 15, 15 ]);
+        xcopies(101.6, sp = [ 0, 0, 0 ]) right(20) fwd(15) circle(r = 3);
     }
 }
 
@@ -26,7 +26,7 @@ module cdrom_caddy()
 
 module right_flap()
 {
-    up(76) yrot(90) linear_extrude(height = 4) rect([ 9, 77 ], anchor = [ 1, -1, 0 ], rounding = [ 0, 5, 5, 0 ]);
+    up(76) yrot(90) linear_extrude(height = 4) rect([ 7, 77 ], anchor = [ 1, -1, 0 ], rounding = [ 0, 5, 5, 0 ]);
 }
 
 module left_flap()
@@ -59,13 +59,16 @@ difference()
         linear_extrude(height = 3) rect([ 180, 18 ], anchor = [ 0, 1, 0 ]);
 }
 
-difference()
-{
-    ycopies(101.6) add_hdd_cage();
-    xcopies(6, n = 15, sp = [ 0, 0, 0 ]) right(31) down(7) xrot(90) yrot(90) xrot(20) linear_extrude(height = 3)
-        rect([ 180, 20 ], anchor = [ 0, 1, 0 ]);
-}
+// difference()
+// {
+//     ycopies(104) add_hdd_cage();
+//     xcopies(6, n = 22, sp = [ 0, 0, 0 ]) right(13) down(7) xrot(90) yrot(90) xrot(20) linear_extrude(height = 3)
+//         rect([ 180, 23 ], anchor = [ 0, 1, 0 ]);
+//     xcopies(6, n = 14, sp = [ 0, 0, 0 ]) right(30) down(35) xrot(90) yrot(90) xrot(-20) linear_extrude(height = 3)
+//         rect([ 180, 10 ], anchor = [ 0, 1, 0 ]);
+// }
 
 up(88.2) zrot(90) linear_extrude(height = 2) rect([ 150, 10 ], anchor = [ 0, 1, 0 ]);
 
-up(80) back(80) right(65) linear_extrude(height = 6) shell2d(-2, ir = 0) rect([ 30, 7 ], anchor = [ 0, 1, 0 ]) fwd(3.5) left(15) zrot(90) right_triangle([7,8]);
+up(80) back(80) right(65) linear_extrude(height = 6) shell2d(-2, ir = 0) rect([ 30, 7 ], anchor = [ 0, 1, 0 ]) fwd(3.5)
+    left(15) zrot(90) right_triangle([ 7, 8 ]);
